@@ -1,0 +1,55 @@
+<!-- views/pages/contact.ejs -->
+<!-- Based off https://getbootstrap.com/docs/4.0/components/forms/ -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include ../partials/head %>
+</head>
+<body class="container">
+
+<header>
+    <% include ../partials/header %>
+</header>
+
+<main>
+    <div class="jumbotron">
+        <h1>Contact Us</h1>
+        <!-- This form should have recaptcha and some sort of validation -->
+        <form method="get" action="server">
+            <div class="form-group ">
+                <label for="firstname">First Name</label>
+                <input class="form-control" name="firstname" placeholder="First Name">
+            </div>
+            <div class="form-group">
+                <label for="lastname">Last Name</label>
+                <input class="form-control" name="lastname" placeholder="Last Name">
+            </div>
+            <div class="form-group">
+              <label for="email">Email address</label>
+              <input type="email" class="form-control" name="email" aria-describedby="emailHelp" placeholder="Enter email">
+              <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input class="form-control" name="phone" placeholder="Enter Phone">
+            </div>
+            <div class="form-group">
+                <label for="subject">Message Subject</label>
+                <input class="form-control" name="subject" placeholder="Message Subject">
+            </div>
+            <div class="form-group">
+                <label for="body">Message Body</label>
+                <textarea class="form-control" id="body" name="body" rows="3"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+    </div>
+</main>
+
+<footer>
+    <% include ../partials/footer %>
+</footer>
+
+</body>
+</html>
