@@ -1,11 +1,17 @@
 // server.js
 var express = require('express');
 var app = express();
-var url  = require('url');
+var bodyParser = require("body-parser");
+//var url  = require('url');
 const mysql = require('mysql');
 
 // set the view engine to ejs
 app.set('view engine', 'ejs');
+
+// set up body parser
+app.use(bodyParser.urlencoded({extended:false}));
+app.use(bodyParser.json());
+// var router = require('express').Router();
 
 // mysql connection
 
@@ -20,14 +26,15 @@ var mysqlConnect = mysql.createConnection({
 // mysql connection
 mysqlConnect.connect(function(err) {if (err) throw err;});
 
-app.get('/server', function(req, res, next){
-    var parts = url.parse(req.url, true);
-    var firstname = parts.query.firstname;
-    var lastname = parts.query.lastname;
-    var email = parts.query.email;
-    var phone = parts.query.phone;
-    var subject = parts.query.subject;
-    var body = parts.query.body;
+app.post('/server', function(req, res, next){
+    //var parts = url.parse(req.url, true);
+    console.log(req.body);
+    var firstname = req.body.firstname;//parts.query.firstname;
+    var lastname = req.body.lastname;
+    var email = req.body.email;
+    var phone = req.body.phone;
+    var subject = req.body.subject;
+    var body = req.body.messagebody;
     subject = subject.replace(/'/g,"''");
     body = body.replace(/'/g,"''");
 
